@@ -78,12 +78,14 @@ export async function convertMarkdownToGoogleDoc(
         throw new Error('Failed to create document: No document ID returned');
       }
 
+      
+
       const documentUrl = `https://docs.google.com/document/d/${documentId}`;
       logger.info('Document created successfully', { 
         documentId, 
         documentUrl, 
         fileName 
-      });
+      });      
 
       // Optionally get the document content to verify it's not empty
       try {

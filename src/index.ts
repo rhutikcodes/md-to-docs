@@ -154,7 +154,7 @@ app.post('/test', async (req: Request, res: Response) => {
 export const mdToGoogleDoc = onRequest({
   memory: '1GiB', // Increase memory from default 256MB to 1GB
   timeoutSeconds: 300, // Also increase timeout to 5 minutes (default is 60s)
-  region: 'us-central1', // Explicitly set region
+  region: 'asia-south1', // Explicitly set region
   concurrency: 30, // Limit concurrent executions to 30
   minInstances: 0, // No minimum instances
   maxInstances: 50, // Maximum 50 instances

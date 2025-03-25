@@ -1,8 +1,21 @@
 {
-  "functions": {
-    "source": "lib",
-    "runtime": "nodejs22"
-  },
+  "functions": [
+    {
+      "source": "lib",
+      "runtime": "nodejs22",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "bun run build"
+      ]
+    }
+  ],
   "emulators": {
     "functions": {
       "port": 5001
@@ -12,7 +25,7 @@
     }
   },
   "hosting": {
-    "site": "md2doc-n8n-aemalsayer-docs",
+    "site": "md2doc",
     "public": "public",
     "rewrites": [
       {
@@ -23,9 +36,9 @@
         "source": "**",
         "function": {
           "functionId": "mdToGoogleDoc",
-          "region": "us-central1"
+          "region": "asia-south1"
         }
       }
     ]
   }
-} 
+}
