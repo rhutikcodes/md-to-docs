@@ -7,12 +7,14 @@ import { Readable } from 'stream';
 export async function convertMarkdownToGoogleDoc(
   markdownContent: string, 
   accessToken: string, 
-  fileName: string = 'Converted from Markdown'
+  fileName: string = 'Converted from Markdown',
+  folderId?: string
 ): Promise<GoogleDocResponse> {
   try {
     logger.info('Starting markdown to Google Doc conversion', { 
       markdownLength: markdownContent.length,
       fileName,
+      folderId,
       sampleMarkdown: markdownContent.substring(0, 100) // Log sample of markdown for debugging
     });
     
@@ -58,7 +60,8 @@ export async function convertMarkdownToGoogleDoc(
     // Upload the docx file to Google Drive
     const fileMetadata = {
       name: fileName,
-      mimeType: 'application/vnd.google-apps.document' // This converts to Google Docs format
+      mimeType: 'application/vnd.google-apps.document', // This converts to Google Docs format
+      ...(folderId ? { parents: [folderId] } : {}) // Add to specified folder if folderId is provided
     };
 
     const media = {

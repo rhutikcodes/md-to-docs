@@ -3,6 +3,7 @@ export interface MarkdownRequest {
   fileName?: string;
   webhookUrl?: string;
   executionMode?: string;
+  folderId?: string;
 }
 
 export interface GoogleDocResponse {
